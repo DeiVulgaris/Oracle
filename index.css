@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ===== BASE ===== */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== REVEAL ANIMATION (Такт 3) ===== */
+@keyframes reveal-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ===== CHARACTER ANIMATIONS ===== */
+
+/* ДА — глубокий утвердительный кивок */
+@keyframes nod-yes {
+  0% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(20px) rotate(5deg); }
+  60% { transform: translateY(10px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* НЕТ — три резких отрицательных жеста (качание головой) */
+@keyframes shake-no {
+  0% { transform: translateX(0) rotate(0deg); }
+  10% { transform: translateX(-15px) rotate(-8deg); }
+  20% { transform: translateX(15px) rotate(8deg); }
+  30% { transform: translateX(0) rotate(0deg); }
+  40% { transform: translateX(-15px) rotate(-8deg); }
+  50% { transform: translateX(15px) rotate(8deg); }
+  60% { transform: translateX(0) rotate(0deg); }
+  70% { transform: translateX(-15px) rotate(-8deg); }
+  80% { transform: translateX(15px) rotate(8deg); }
+  90% { transform: translateX(-5px) rotate(-3deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* НЕ ОПРЕДЕЛЕНО — пожимание плечами */
+@keyframes shrug {
+  0% { transform: translateY(0) scaleY(1); }
+  20% { transform: translateY(-10px) scaleY(0.92); }
+  40% { transform: translateY(-15px) scaleY(0.88); }
+  60% { transform: translateY(-15px) scaleY(0.88); }
+  80% { transform: translateY(-5px) scaleY(0.96); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+/* Eyebrow raise for UNCERTAIN */
+@keyframes eyebrow-raise {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  70% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* Ghost idle float */
+@keyframes ghost-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Ghost tail wave */
+@keyframes tail-wave {
+  0%, 100% { d: path("M 30 90 Q 40 100 50 90 Q 60 80 70 90 Q 80 100 90 90"); }
+  50% { d: path("M 30 90 Q 40 80 50 90 Q 60 100 70 90 Q 80 80 90 90"); }
+}
+
+/* Pulse for face-down state */
+@keyframes pulse-dim {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+/* Subtle breathing for stabilization */
+@keyframes breathe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.05; }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.animate-reveal {
+  animation: reveal-burst 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 3.0s ease-out forwards;
+}
+
+.animate-nod-yes {
+  animation: nod-yes 1.0s ease-in-out;
+}
+
+.animate-shake-no {
+  animation: shake-no 0.9s ease-in-out;
+}
+
+.animate-shrug {
+  animation: shrug 1.2s ease-in-out;
+}
+
+.animate-eyebrow-raise {
+  animation: eyebrow-raise 1.2s ease-in-out;
+}
+
+.animate-ghost-float {
+  animation: ghost-float 3s ease-in-out infinite;
+}
+
+.animate-pulse-dim {
+  animation: pulse-dim 4s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Screen transition */
+.screen-black {
+  background: #000;
+}
+
+/* Text colors for answers */
+.text-answer-yes {
+  color: #ef4444; /* Red */
+  text-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+}
+
+.text-answer-no {
+  color: #9ca3af; /* Gray */
+  text-shadow: 0 0 20px rgba(156, 163, 175, 0.3);
+}
+
+.text-answer-uncertain {
+  color: #3b82f6; /* Blue */
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+/* Debug panel */
+.debug-panel {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #666;
+  font-family: monospace;
+  z-index: 100;
+  pointer-events: none;
+}
