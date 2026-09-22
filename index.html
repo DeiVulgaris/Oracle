@@ -1,174 +1,97 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oracle: Flip & Resonance</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        body {
-            margin: 0; padding: 0;
-            background-color: #030303; color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex; justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden;
-            user-select: none; -webkit-user-select: none;
-        }
-        #oracle-element {
-            font-weight: 800; 
-            text-transform: uppercase; 
-            text-align: center;
-            opacity: 0; 
-            display: none;
-            line-height: 1;
-        }
-        .yes { color: #ff3b30; text-shadow: 0 0 25px rgba(255, 59, 48, 0.4); }
-        .no { color: #8e8e93; text-shadow: 0 0 25px rgba(142, 142, 145, 0.2); }
-        .maybe { color: #007aff; text-shadow: 0 0 25px rgba(0, 122, 255, 0.4); }
-        #hint {
-            position: absolute; font-size: 0.8rem; color: #444;
-            bottom: 40px; text-align: center; width: 100%; letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s ease, opacity 0.3s ease;
-        }
+      /* 内联样式确保主题色立即生效，避免闪烁 */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      html.light,
+      html.light body {
+        background-color: #ffffff !important;
+        color: #000000;
+      }
+      html.dark,
+      html.dark body {
+        background-color: #1a1a1a !important;
+        color: #ffffff;
+      }
     </style>
-</head>
-<body>
-
-    <div id="oracle-element"></div>
-    <div id="hint">ТАПНИ ДЛЯ АКТИВАЦИИ ЛОГОСА</div>
-
     <script>
-        const element = document.getElementById('oracle-element');
-        const hint = document.getElementById('hint');
+      // 在 React 加载前立即设置主题，避免闪烁
+      (function () {
+        const isInIframe = window.self !== window.top;
 
-        // СИНХРОНИЗАЦИЯ: Паттерны вибрации под жесты персонажа (ТЗ 1.5)
-        const answers = [
-            { text: 'ДА', type: 'yes', vibe: [1000] }, // 1 длинный плотный кивок (1 секунда)
-            { text: 'НЕТ', type: 'no', vibe: [150, 150, 150, 150, 150] }, // 3 хлестких отсечки (скрещение рук/палец)
-            { text: 'НЕ ОПРЕДЕЛЕНО', type: 'maybe', vibe: [150, 250, 800] } // Маркер-вопрос + зависание + шлейф плеч
-        ];
-
-        let isReady = false; 
-        let isShowing = false; 
-        let nextAnswer = null;
-        let sensorsActivated = false;
-
-        function runVibration(pattern) {
-            if ("vibrate" in navigator) navigator.vibrate(pattern);
+        function applyThemeToDOM(theme) {
+          document.documentElement.classList.remove("light", "dark");
+          document.documentElement.classList.add(theme);
+          document.documentElement.setAttribute("data-theme", theme);
         }
 
-        function bakeAnswer() {
-            isReady = true;
-            const rand = Math.random();
-            if (rand < 0.45) nextAnswer = answers[0];
-            else if (rand < 0.90) nextAnswer = answers[1];
-            else nextAnswer = answers[2];
-
-            // Визуальный и тактильный фидбек запекания
-            element.style.display = 'none'; // Принудительно прячем старый текст в темноте стола
-            hint.innerText = "ОРАКУЛ СЛУШАЕТ...";
-            hint.style.color = "#ff3b30";
-            hint.style.opacity = "1";
-            runVibration(40);
-        }
-
-        function triggerShow() {
-            if (!nextAnswer) return;
-
-            element.innerText = nextAnswer.text;
-            element.className = nextAnswer.type;
-            element.style.display = 'block';
-            element.style.transition = 'none';
-            element.style.fontSize = '0rem';
-            element.style.opacity = '0';
-
-            // Синестетический старт звука/вибро строго в миг взрыва
-            runVibration(nextAnswer.vibe);
-
-            requestAnimationFrame(() => {
-                // Взрывное вспухание до 150% через кубическое Безье (эффект Bounce)
-                element.style.transition = 'font-size 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.15s ease';
-                element.style.fontSize = '6.5rem';
-                element.style.opacity = '1';
-
-                setTimeout(() => {
-                    // Возврат к стабильным 100% за 0.15 сек
-                    element.style.transition = 'font-size 0.15s ease-out';
-                    element.style.fontSize = '4.5rem';
-                }, 150);
-            });
-
-            // ФАЗА СТАТИКИ: Жесткие 2.0 секунды удержания формы без изменений
-            setTimeout(() => {
-                // ФАЗА ТАЯНИЯ: Ровно 3.0 секунды плавного исчезновения цвета на месте (шрифт статичен)
-                element.style.transition = 'opacity 3.0s linear';
-                element.style.opacity = '0';
-
-                setTimeout(() => {
-                    element.style.display = 'none';
-                    nextAnswer = null; 
-                    isShowing = false;
-                    hint.innerText = "ПОЛОЖИ ЭКРАНОМ ВНИЗ";
-                    hint.style.color = "#444";
-                    hint.style.opacity = "1";
-                }, 3000);
-
-            }, 2300); // 300мс вспухание + 2000мс удержание
-        }
-
-        // --- УНИВЕРСАЛЬНЫЙ МОНИТОРИНГ ЧЕРЕЗ СИЛУ ТЯЖЕСТИ (Z-ОСЬ) ---
-        function handleMotion(e) {
-            if (!sensorsActivated) return;
-
-            // Берём ускорение с учётом гравитации Земли
-            let acc = e.accelerationIncludingGravity;
-            if (!acc || acc.z === null) return;
-
-            let z = acc.z;
-
-            // Проверка на инверсию осей (некоторые старые прошивки инвертируют Z)
-            // Нормальное положение экрана вверх: Z ≈ -9.8 м/с². Экран вниз: Z ≈ +9.8 м/с²
-            let isFaceDown = z > 7.0;
-            let isFaceUp = z < -4.5;
-
-            if (isFaceDown && !isReady && !isShowing) {
-                bakeAnswer();
-            } 
-            else if (isFaceUp && isReady && !isShowing) {
-                isShowing = true; 
-                isReady = false;
-                hint.style.opacity = '0';
-                // ТАКТ 2: Ровно 1 секунда удержания экрана вверх перед вспуханием
-                setTimeout(triggerShow, 1000);
+        if (isInIframe) {
+          // 监听父窗口主动推送的主题消息
+          window.addEventListener("message", function (event) {
+            if (event.data && typeof event.data.theme === "string") {
+              const theme = event.data.theme;
+              if (theme === "light" || theme === "dark") {
+                applyThemeToDOM(theme);
+              }
             }
+          });
+        } else {
+          // 非 iframe 环境，使用默认 light 主题
+          applyThemeToDOM("light");
         }
-
-        // Кроссплатформенная активация датчиков движения по клику
-        window.addEventListener('click', () => {
-            if (sensorsActivated) return;
-
-            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-                // Запрос для iOS (Safari)
-                DeviceMotionEvent.requestPermission()
-                    .then(state => {
-                        if (state === 'granted') {
-                            sensorsActivated = true;
-                            window.addEventListener('devicemotion', handleMotion, true);
-                            hint.innerText = "ПОЛОЖИ ЭКРАНОМ ВНИЗ";
-                            runVibration(60);
-                        } else {
-                            hint.innerText = "ДОСТУП К ДАТЧИКАМ ОТКЛОНЕН";
-                        }
-                    })
-                    .catch(console.error);
-            } else {
-                // Активация для Android (Chrome) и остальных браузеров
-                sensorsActivated = true;
-                window.addEventListener('devicemotion', handleMotion, true);
-                hint.innerText = "ПОЛОЖИ ЭКРАНОМ ВНИЗ";
-                runVibration(60);
-            }
-        });
+      })();
     </script>
-</body>
+      <script>
+      (function () {
+        if (window.self === window.top) return;
+        var reported = {};
+        window.addEventListener("error", function (event) {
+          // 资源加载失败的 error 事件没有 message，此处仅上报 JS 运行时错误
+          if (!event || !event.message) return;
+          var key =
+            event.message + "|" + (event.filename || "") + "|" + (event.lineno || 0);
+          if (reported[key]) return; // 相同错误只上报一次，避免渲染循环刷屏
+          reported[key] = true;
+          try {
+            window.parent.postMessage(
+              {
+                type: "sandbox-runtime-error",
+                payload: {
+                  message: String(event.message).slice(0, 500),
+                  filename: event.filename || "",
+                  lineno: event.lineno || 0,
+                  colno: event.colno || 0,
+                  stack:
+                    event.error && event.error.stack
+                      ? String(event.error.stack).slice(0, 2000)
+                      : ""
+                }
+              },
+              "*"
+            );
+          } catch (e) {
+            /* 上报失败不影响页面运行 */
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
