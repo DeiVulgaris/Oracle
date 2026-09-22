@@ -64,9 +64,11 @@
             else if (rand < 0.90) nextAnswer = answers[1];
             else nextAnswer = answers[2];
 
-            // Визуальный и тактильный фидбек запекания (короткий отклик на Android)
+            // Визуальный и тактильный фидбек запекания
+            element.style.display = 'none'; // Принудительно прячем старый текст в темноте стола
             hint.innerText = "ОРАКУЛ СЛУШАЕТ...";
             hint.style.color = "#ff3b30";
+            hint.style.opacity = "1";
             runVibration(40);
         }
 
@@ -114,18 +116,20 @@
             }, 2300); // 300мс вспухание + 2000мс удержание
         }
 
-        // --- МОНИТОРИНГ ДАТЧИКОВ ПОЛОЖЕНИЯ ---
-        function handleOrientation(e) {
+        // --- УНИВЕРСАЛЬНЫЙ МОНИТОРИНГ ЧЕРЕЗ СИЛУ ТЯЖЕСТИ (Z-ОСЬ) ---
+        function handleMotion(e) {
             if (!sensorsActivated) return;
 
-            let beta = e.beta; 
-            let gamma = e.gamma;
-            
-            if (beta === null || gamma === null) return;
+            // Берём ускорение с учётом гравитации Земли
+            let acc = e.accelerationIncludingGravity;
+            if (!acc || acc.z === null) return;
 
-            // Расширенная калибровка триггеров под удержание в руке
-            let isFaceDown = Math.abs(beta) > 155 || (Math.abs(gamma) > 65 && beta < 0);
-            let isFaceUp = Math.abs(beta) < 35 && Math.abs(gamma) < 35;
+            let z = acc.z;
+
+            // Проверка на инверсию осей (некоторые старые прошивки инвертируют Z)
+            // Нормальное положение экрана вверх: Z ≈ -9.8 м/с². Экран вниз: Z ≈ +9.8 м/с²
+            let isFaceDown = z > 7.0;
+            let isFaceUp = z < -4.5;
 
             if (isFaceDown && !isReady && !isShowing) {
                 bakeAnswer();
@@ -139,18 +143,18 @@
             }
         }
 
-        // Инициализация датчиков при клике (универсальный кроссплатформенный метод)
+        // Кроссплатформенная активация датчиков движения по клику
         window.addEventListener('click', () => {
             if (sensorsActivated) return;
 
-            if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-                // Логика для iOS (Safari)
-                DeviceOrientationEvent.requestPermission()
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+                // Запрос для iOS (Safari)
+                DeviceMotionEvent.requestPermission()
                     .then(state => {
                         if (state === 'granted') {
                             sensorsActivated = true;
-                            window.addEventListener('deviceorientation', handleOrientation, true);
-                            hint.innerText = "КЛАДИ ЭКРАНОМ ВНИЗ";
+                            window.addEventListener('devicemotion', handleMotion, true);
+                            hint.innerText = "ПОЛОЖИ ЭКРАНОМ ВНИЗ";
                             runVibration(60);
                         } else {
                             hint.innerText = "ДОСТУП К ДАТЧИКАМ ОТКЛОНЕН";
@@ -158,10 +162,10 @@
                     })
                     .catch(console.error);
             } else {
-                // Логика для Android (Chrome) и десктопных браузеров
+                // Активация для Android (Chrome) и остальных браузеров
                 sensorsActivated = true;
-                window.addEventListener('deviceorientation', handleOrientation, true);
-                hint.innerText = "КЛАДИ ЭКРАНОМ ВНИЗ";
+                window.addEventListener('devicemotion', handleMotion, true);
+                hint.innerText = "ПОЛОЖИ ЭКРАНОМ ВНИЗ";
                 runVibration(60);
             }
         });
