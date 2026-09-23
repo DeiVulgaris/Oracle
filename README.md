@@ -1250,3 +1250,297 @@ It creates a minimal difference and observes what happens to the system after th
 # 36. One-Sentence Product Definition
 
 > **Oracle: Flip & Resonance is a privacy-first ritual interface that introduces a minimal random perturbation into unresolved choices and helps users observe the reactions and patterns that follow.**
+
+
+# 37. Telegram Oracle
+
+Telegram can serve as a lightweight, fully functional Oracle interface and as an MVP channel for validating the core interaction model.
+
+The Telegram version should not simply be a reduced copy of the mobile application. Its strength is the simplicity of the interaction:
+
+$$
+Think \rightarrow FLIP \rightarrow Reveal \rightarrow Reaction
+$$
+
+## 37.1 Basic Telegram Interaction
+
+The bot presents:
+
+```text
+              ORACLE
+
+       Think of your question.
+
+          ┌─────────────┐
+          │    FLIP     │
+          └─────────────┘
+```
+
+The user does not need to type the question.
+
+When the user presses **FLIP**, Telegram sends the button interaction to the bot.
+
+The bot then generates and reveals:
+
+- YES;
+- NO;
+- UNDEFINED.
+
+The button press itself is therefore a real Oracle event.
+
+## 37.2 Callback Interaction
+
+The FLIP control should use Telegram's interactive button/callback mechanism.
+
+Conceptually:
+
+```text
+User
+  │
+  │  press FLIP
+  ↓
+Telegram
+  │
+  │  callback event
+  ↓
+Oracle Bot
+  │
+  │  random response
+  ↓
+YES / NO / UNDEFINED
+```
+
+The bot can edit the original message after the button press rather than sending an unrelated new message.
+
+This allows the ritual to feel like one continuous interaction.
+
+## 37.3 Reveal Sequence
+
+A simple Telegram reveal may use message editing:
+
+```text
+FLIP
+ ↓
+...
+ ↓
+...
+ ↓
+YES
+```
+
+or:
+
+```text
+ORACLE
+
+        FLIP
+          ↓
+       [ ... ]
+          ↓
+       [ ... ]
+          ↓
+          YES
+```
+
+The timing and number of intermediate states should remain short enough that the interaction feels responsive.
+
+Telegram cannot reproduce the full physical animation and haptic experience of the native mobile application. Therefore:
+
+> **Telegram is the conversational Oracle. The mobile application is the embodied Oracle.**
+
+## 37.4 Reaction Layer
+
+After revealing the answer, the bot can ask:
+
+```text
+YES
+
+What was your reaction?
+```
+
+Possible buttons:
+
+```text
+[ I liked it ]   [ I didn't ]
+[ I don't know ] [ Tell me why ]
+```
+
+This creates the second half of the Oracle model.
+
+The Oracle provides the first answer.
+
+The user's reaction provides the second.
+
+$$
+Oracle\ Answer \rightarrow Reaction
+$$
+
+The optional **Tell me why** action allows the user to voluntarily describe the reaction.
+
+Example:
+
+```text
+ORACLE
+
+YES
+
+What was your reaction?
+
+[ I liked it ]
+[ I didn't ]
+[ I don't know ]
+[ Tell me why ]
+```
+
+User:
+
+> "I was hoping for NO."
+
+The Oracle has then revealed a possible internal preference without ever claiming to know it beforehand.
+
+## 37.5 Telegram Free Mode
+
+The basic Telegram Oracle should be usable without creating a separate Oracle account.
+
+Possible Free behavior:
+
+- no Oracle registration;
+- no question required;
+- one-tap FLIP;
+- YES / NO / UNDEFINED;
+- optional Mental Guide;
+- optional reaction buttons;
+- no personal Resonance history by default.
+
+> **Free Oracle forgets you.**
+
+Telegram's own user/account infrastructure should not automatically be treated as consent to create a personal psychological profile.
+
+## 37.6 Telegram Resonance Mode
+
+A user may explicitly activate Resonance.
+
+Example:
+
+```text
+Want Oracle to remember your sessions?
+
+[ ENABLE RESONANCE ]
+[ NOT NOW ]
+```
+
+Only after explicit consent should the system create persistent Resonance data associated with the user.
+
+The same privacy principle applies as in the mobile application:
+
+> **Memory by Consent.**
+
+The Telegram interface can then become another client of the same Oracle Cloud:
+
+```text
+                 ORACLE CLOUD
+                /             \
+               /               \
+       Mobile App           Telegram
+            │                   │
+            └──── Resonance ───┘
+                     │
+                     ↓
+                    AI
+```
+
+## 37.7 Telegram as MVP
+
+Telegram provides a particularly inexpensive way to validate the central product hypothesis before implementing the full mobile experience.
+
+### MVP
+
+- Telegram Bot;
+- interactive FLIP button;
+- callback handling;
+- YES / NO / UNDEFINED;
+- random response generation;
+- simple reveal animation through message editing;
+- optional Mental Guide;
+- optional reaction buttons;
+- no AI required;
+- no persistent memory required.
+
+### Later stages
+
+**Telegram + Resonance**
+
+Add:
+
+- optional question recording;
+- sessions;
+- reaction history;
+- Resonance Threads;
+- frequency analysis.
+
+**Telegram + AI Insight**
+
+Add:
+
+- longitudinal pattern analysis;
+- reflective observations;
+- Resonance reports.
+
+**Telegram + AI Companion**
+
+Add:
+
+- conversational reflection after an Oracle event;
+- optional transition from Oracle to dialogue.
+
+## 37.8 Telegram and Product Architecture
+
+Telegram should be treated as an additional Oracle client rather than a separate product.
+
+```text
+                    ORACLE CORE
+                        │
+          ┌─────────────┴─────────────┐
+          │                           │
+     Mobile Client              Telegram Client
+          │                           │
+          └─────────────┬─────────────┘
+                        │
+                  Oracle Cloud
+                        │
+              Resonance / AI
+```
+
+The Oracle logic should remain conceptually identical across clients:
+
+$$
+Random\ Perturbation
+\rightarrow
+Response
+\rightarrow
+Reaction
+$$
+
+The interface changes.
+
+The epistemic status does not.
+
+## 37.9 Telegram Product Principle
+
+Telegram must not become a "smart Oracle" simply because it has access to AI or cloud data.
+
+The distinction remains:
+
+$$
+Oracle \neq AI \neq Decision\ Maker
+$$
+
+Telegram provides the interface.
+
+Oracle provides the perturbation.
+
+Resonance provides memory.
+
+AI provides reflection.
+
+The decision remains with the user.
