@@ -1,6 +1,6 @@
 import os
 import asyncio
-import random
+
 
 from dotenv import load_dotenv
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -11,20 +11,14 @@ from telegram.ext import (
     ContextTypes,
 )
 
+from core.oracle import oracle_answer
+
 load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
 
 if not TOKEN:
     raise RuntimeError("BOT_TOKEN not found in .env")
-
-
-def oracle_answer():
-    return random.choices(
-        ["YES", "NO", "UNDEFINED"],
-        weights=[45, 45, 10],
-        k=1,
-    )[0]
 
 
 def flip_keyboard():
