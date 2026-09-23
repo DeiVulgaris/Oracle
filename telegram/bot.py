@@ -11,7 +11,7 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from core.oracle import oracle_answer
+from core.oracle import flip as oracle_flip
 
 load_dotenv()
 
@@ -87,7 +87,7 @@ async def flip(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await asyncio.sleep(0.4)
 
-    answer = oracle_answer()
+    answer = oracle_flip()
 
     text = (
         "<b>ORACLE</b>\n\n"
