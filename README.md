@@ -1254,77 +1254,105 @@ It creates a minimal difference and observes what happens to the system after th
 
 # 37. Telegram Oracle
 
-Telegram can serve as a lightweight, fully functional Oracle interface and as an MVP channel for validating the core interaction model.
+Telegram is the first working external interface of Oracle.
 
-The Telegram version should not simply be a reduced copy of the mobile application. Its strength is the simplicity of the interaction:
+The current implementation is deliberately minimal: it provides the core Oracle interaction without requiring a mobile application, user registration, question input, AI, memory, or additional interpretation.
 
-$$
-Think \rightarrow FLIP \rightarrow Reveal \rightarrow Reaction
-$$
+### Live Demo
 
-## 37.1 Basic Telegram Interaction
+**Telegram Bot:** `@Oracle_Resonance_Bot`
 
-The bot presents:
+The bot is a live, operational example of the Oracle interaction model.
+
+The basic interaction is:
 
 ```text
-              ORACLE
-
-       Think of your question.
-
-          ┌─────────────┐
-          │    FLIP     │
-          └─────────────┘
+Think → FLIP → Reveal
 ```
 
-The user does not need to type the question.
-
-When the user presses **FLIP**, Telegram sends the button interaction to the bot.
-
-The bot then generates and reveals:
-
-- YES;
-- NO;
-- UNDEFINED.
-
-The button press itself is therefore a real Oracle event.
-
-## 37.2 Callback Interaction
-
-The FLIP control should use Telegram's interactive button/callback mechanism.
-
-Conceptually:
+The user thinks of a question privately, presses **FLIP**, and receives one of three possible states:
 
 ```text
-User
-  │
-  │  press FLIP
-  ↓
-Telegram
-  │
-  │  callback event
-  ↓
-Oracle Bot
-  │
-  │  random response
-  ↓
-YES / NO / UNDEFINED
+YES
+NO
+UNDEFINED
 ```
 
-The bot can edit the original message after the button press rather than sending an unrelated new message.
+The question itself does not need to be entered into Telegram.
 
-This allows the ritual to feel like one continuous interaction.
+---
 
-## 37.3 Reveal Sequence
+## 37.1 Why Telegram?
 
-A simple Telegram reveal may use message editing:
+Telegram provides a simple way to expose the Oracle mechanism to a real user without first developing the complete mobile application.
+
+It allows the project to validate the most fundamental interaction:
 
 ```text
-FLIP
- ↓
-...
- ↓
-...
- ↓
+Private Question
+      ↓
+     FLIP
+      ↓
+Random Response
+      ↓
+   Reaction
+```
+
+The Telegram implementation therefore serves two purposes:
+
+1. **a working Oracle client;**
+2. **an MVP for validating the core interaction model.**
+
+Telegram is not intended to reproduce the complete mobile Oracle experience.
+
+> **Telegram is the conversational Oracle. The mobile application will be the embodied Oracle.**
+
+---
+
+## 37.2 Current Working Implementation
+
+The current Telegram MVP provides:
+
+* Telegram Bot interface;
+* `/start` command;
+* `/help` command;
+* interactive **FLIP** button;
+* Telegram callback handling;
+* random **YES / NO / UNDEFINED** generation;
+* message editing after the FLIP action;
+* no question input required;
+* no Oracle account;
+* no persistent personal memory;
+* no AI;
+* no audio requirement.
+
+The current interaction is intentionally simple:
+
+```text
+ORACLE
+
+Think of a question.
+
+Press FLIP.
+
+Get your answer.
+```
+
+After the user presses **FLIP**, the message is replaced by the Oracle result.
+
+For example:
+
+```text
+ORACLE
+
+NO
+```
+
+The result may also be:
+
+```text
+ORACLE
+
 YES
 ```
 
@@ -1333,214 +1361,283 @@ or:
 ```text
 ORACLE
 
-        FLIP
-          ↓
-       [ ... ]
-          ↓
-       [ ... ]
-          ↓
-          YES
+UNDEFINED
 ```
 
-The timing and number of intermediate states should remain short enough that the interaction feels responsive.
+---
 
-Telegram cannot reproduce the full physical animation and haptic experience of the native mobile application. Therefore:
+## 37.3 The Question Remains Private
 
-> **Telegram is the conversational Oracle. The mobile application is the embodied Oracle.**
+The user does not have to type the question.
 
-## 37.4 Reaction Layer
-
-After revealing the answer, the bot can ask:
+The actual interaction can therefore remain entirely internal to the user:
 
 ```text
-YES
-
-What was your reaction?
+Question
+   │
+   │ remains in the user's mind
+   ↓
+ FLIP
+   ↓
+Oracle
+   ↓
+YES / NO / UNDEFINED
 ```
 
-Possible buttons:
+The Telegram bot does not need to know what the user asked.
+
+This is consistent with the fundamental Oracle principle:
+
+> **The Oracle creates the perturbation. The meaning belongs to the human.**
+
+---
+
+## 37.4 FLIP as the Oracle Event
+
+The **FLIP** button is not merely a user-interface control.
+
+It is the operational event that triggers the Oracle response.
+
+Conceptually:
 
 ```text
-[ I liked it ]   [ I didn't ]
-[ I don't know ] [ Tell me why ]
+User
+  │
+  │ thinks
+  ↓
+Question
+  │
+  │ presses FLIP
+  ↓
+Telegram
+  │
+  │ callback
+  ↓
+Oracle Core
+  │
+  │ random response
+  ↓
+YES / NO / UNDEFINED
 ```
 
-This creates the second half of the Oracle model.
+The Telegram interface therefore implements the essential Oracle operation without requiring any interpretation layer.
 
-The Oracle provides the first answer.
+The Oracle does not analyze the question.
 
-The user's reaction provides the second.
+It does not attempt to determine the correct answer.
 
-$$
-Oracle\ Answer \rightarrow Reaction
-$$
+It simply produces the perturbation.
 
-The optional **Tell me why** action allows the user to voluntarily describe the reaction.
+---
 
-Example:
+## 37.5 Oracle Core
+
+The Telegram client uses the same conceptual Oracle core:
 
 ```text
-ORACLE
-
-YES
-
-What was your reaction?
-
-[ I liked it ]
-[ I didn't ]
-[ I don't know ]
-[ Tell me why ]
+Oracle Core
+     ↓
+random response
+     ↓
+YES / NO / UNDEFINED
 ```
 
-User:
+The current response distribution is:
 
-> "I was hoping for NO."
+* YES — 45%
+* NO — 45%
+* UNDEFINED — 10%
 
-The Oracle has then revealed a possible internal preference without ever claiming to know it beforehand.
+The response is independent of the content of the user's question.
 
-## 37.5 Telegram Free Mode
+The interface therefore does not need to transmit or understand the question.
 
-The basic Telegram Oracle should be usable without creating a separate Oracle account.
-
-Possible Free behavior:
-
-- no Oracle registration;
-- no question required;
-- one-tap FLIP;
-- YES / NO / UNDEFINED;
-- optional Mental Guide;
-- optional reaction buttons;
-- no personal Resonance history by default.
-
-> **Free Oracle forgets you.**
-
-Telegram's own user/account infrastructure should not automatically be treated as consent to create a personal psychological profile.
-
-## 37.6 Telegram Resonance Mode
-
-A user may explicitly activate Resonance.
-
-Example:
+This preserves the distinction:
 
 ```text
-Want Oracle to remember your sessions?
-
-[ ENABLE RESONANCE ]
-[ NOT NOW ]
+Oracle ≠ AI
+Oracle ≠ Decision Maker
 ```
 
-Only after explicit consent should the system create persistent Resonance data associated with the user.
+---
 
-The same privacy principle applies as in the mobile application:
+## 37.6 Telegram Is Deliberately Minimal
 
-> **Memory by Consent.**
+The Telegram implementation is not intended to contain every feature planned for the Oracle application.
 
-The Telegram interface can then become another client of the same Oracle Cloud:
+At this stage there is deliberately:
+
+* no sound;
+* no haptic feedback;
+* no physical sensor analysis;
+* no reaction recording;
+* no Resonance history;
+* no AI Companion;
+* no personalized Oracle;
+* no cinematic interface.
+
+This is intentional.
+
+The purpose of the Telegram MVP is to demonstrate that the smallest possible Oracle interaction is already meaningful:
 
 ```text
-                 ORACLE CLOUD
-                /             \
-               /               \
-       Mobile App           Telegram
-            │                   │
-            └──── Resonance ───┘
+Think
+  ↓
+FLIP
+  ↓
+YES / NO / UNDEFINED
+```
+
+Additional features belong to later product stages.
+
+---
+
+## 37.7 Audio and the Native Application
+
+Audio is not required for the Telegram Oracle.
+
+This is partly a design decision.
+
+An Oracle interaction may take place in an office, at home with other people nearby, in public transport, or in another situation where the user does not want the result to be heard aloud.
+
+Therefore the Telegram MVP remains silent.
+
+The project already contains audio assets for future use:
+
+```text
+YES.wav
+NO.wav
+UNDEFINED.wav
+```
+
+These assets are intended for future interfaces where sound can be an optional part of the experience.
+
+The native application may allow the user to choose:
+
+* silent operation;
+* sound;
+* headphones;
+* haptic feedback;
+* visual-only interaction.
+
+The interface determines how the Oracle is experienced.
+
+The Oracle result itself does not change.
+
+---
+
+## 37.8 Telegram as a Working Example
+
+The Telegram bot is more than a prototype description.
+
+It is the first operational example of Oracle.
+
+The repository therefore contains both:
+
+```text
+CONCEPT
+   ↓
+MODEL
+   ↓
+IMPLEMENTATION
+   ↓
+LIVE TELEGRAM EXAMPLE
+```
+
+Anyone can use the live bot to experience the basic interaction before examining the technical implementation.
+
+**Live:** `@Oracle_Resonance_Bot`
+
+The current implementation demonstrates the minimum viable Oracle:
+
+```text
+Think → FLIP → Reveal
+```
+
+---
+
+## 37.9 From Telegram to the Application
+
+The Telegram implementation establishes the smallest working layer.
+
+The future native application can build on the same conceptual model:
+
+```text
+                 ORACLE CORE
                      │
+          ┌──────────┴──────────┐
+          │                     │
+      Telegram              Mobile App
+          │                     │
+       Simple               Embodied
+       Oracle                Oracle
+          │                     │
+          └──────────┬──────────┘
+                     ↓
+                 Resonance
                      ↓
                     AI
 ```
 
-## 37.7 Telegram as MVP
+The clients may differ radically in presentation.
 
-Telegram provides a particularly inexpensive way to validate the central product hypothesis before implementing the full mobile experience.
-
-### MVP
-
-- Telegram Bot;
-- interactive FLIP button;
-- callback handling;
-- YES / NO / UNDEFINED;
-- random response generation;
-- simple reveal animation through message editing;
-- optional Mental Guide;
-- optional reaction buttons;
-- no AI required;
-- no persistent memory required.
-
-### Later stages
-
-**Telegram + Resonance**
-
-Add:
-
-- optional question recording;
-- sessions;
-- reaction history;
-- Resonance Threads;
-- frequency analysis.
-
-**Telegram + AI Insight**
-
-Add:
-
-- longitudinal pattern analysis;
-- reflective observations;
-- Resonance reports.
-
-**Telegram + AI Companion**
-
-Add:
-
-- conversational reflection after an Oracle event;
-- optional transition from Oracle to dialogue.
-
-## 37.8 Telegram and Product Architecture
-
-Telegram should be treated as an additional Oracle client rather than a separate product.
+The Oracle principle remains the same:
 
 ```text
-                    ORACLE CORE
-                        │
-          ┌─────────────┴─────────────┐
-          │                           │
-     Mobile Client              Telegram Client
-          │                           │
-          └─────────────┬─────────────┘
-                        │
-                  Oracle Cloud
-                        │
-              Resonance / AI
+Random Perturbation
+        ↓
+     Response
+        ↓
+     Reaction
 ```
 
-The Oracle logic should remain conceptually identical across clients:
+---
 
-$$
-Random\ Perturbation
-\rightarrow
-Response
-\rightarrow
-Reaction
-$$
+## 37.10 Current Development Status
 
-The interface changes.
+### Stage 1 — WORKING
 
-The epistemic status does not.
+The first operational Oracle client has been implemented and deployed through Telegram.
 
-## 37.9 Telegram Product Principle
+Current status:
 
-Telegram must not become a "smart Oracle" simply because it has access to AI or cloud data.
+* **Oracle Core:** working
+* **Telegram Bot:** working
+* **Webhook:** working
+* **FLIP interaction:** working
+* **YES / NO / UNDEFINED:** working
+* **Question input:** not required
+* **Persistent memory:** not implemented
+* **AI:** not implemented
+* **Audio:** reserved for future application
+* **Native mobile application:** future stage
 
-The distinction remains:
+The Telegram implementation therefore constitutes the first working proof-of-concept of the Oracle interaction model.
 
-$$
-Oracle \neq AI \neq Decision\ Maker
-$$
+> **The concept is no longer only a specification. It has a working interface.**
 
-Telegram provides the interface.
+---
 
-Oracle provides the perturbation.
+## 37.11 Product Principle
 
-Resonance provides memory.
+The Telegram implementation establishes an important development rule for future clients:
 
-AI provides reflection.
+> **Do not make the Oracle more complicated than the experience requires.**
 
-The decision remains with the user.
+The essential Oracle requires only:
+
+```text
+A question
+     +
+A FLIP
+     ↓
+YES / NO / UNDEFINED
+```
+
+Everything else is an additional layer.
+
+The additional layers may make the experience richer, more beautiful, more reflective, or more personalized.
+
+They must not obscure the fundamental mechanism.
+
+> **Oracle doesn't know. That's the point.**
