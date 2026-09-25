@@ -1,958 +1,1146 @@
-# ORACLE
+# PYTHIA
 
 ## Product Specification
 
-**Version:** 0.1
+**Version:** 0.2
 **Status:** Product Definition
-**Project:** Oracle — Flip & Resonance
+**Project:** Pythia — Flip & Resonance
 
 ---
 
-## 1. Product Concept
+# 1. Product Concept
 
-**Oracle** is a minimal ritual interface designed to introduce a small random perturbation into an unresolved decision and allow the user to observe their own reaction.
+**Pythia** is a minimal ritual interface for unresolved questions.
 
-The core interaction is deliberately simple:
+It does not make decisions for the user.
+
+It introduces a small external event and gives the user something to react to.
+
+The fundamental mechanism is:
 
 ```text
-Question
-   ↓
+ASK
+ ↓
 FLIP
-   ↓
-YES / NO / UNDEFINED
-   ↓
-Reaction
+ ↓
+ANSWER
+ ↓
+ASK
 ```
 
-Oracle does not claim to know the future.
+The event belongs to Pythia.
 
-Oracle does not make decisions for the user.
+The meaning belongs to the human.
 
-Oracle creates an event.
+> **Pythia doesn't know. That's the point.**
 
-The meaning of that event belongs to the human.
+Pythia is not primarily a prediction system.
 
-> **Oracle doesn't know. That's the point.**
-
-The product is based on a simple mechanism:
-
-```text
-Frustration
-     ↓
-Minimal intervention
-     ↓
-Reaction
-     ↓
-Movement
-```
-
-Oracle is therefore not primarily a prediction system. It is a **mechanism for moving an unresolved problem off dead center**.
+It is a mechanism for moving a thought off dead center.
 
 ---
 
-# 2. Product Principles
+# 2. Design Philosophy
 
-### 2.1 Minimal intervention
+## 2.1 Minimal intervention
 
-Oracle should interfere with the user's decision as little as possible.
+Pythia should interfere with the user's thinking as little as possible.
 
-The fundamental intervention is only:
+The application does not require the user to enter the question.
+
+The question exists in the user's mind.
+
+Pythia only creates an external event.
+
+---
+
+## 2.2 Human interpretation
+
+Pythia produces an event, not an interpretation.
+
+The user decides what the event means.
+
+The application should not present the result as objective truth, advice, or instruction.
+
+---
+
+## 2.3 Movement of thought
+
+The purpose of `ASK` is not simply to request input.
+
+It creates a small state of incompleteness:
 
 ```text
+ASK
+ ↓
+What should I ask?
+ ↓
+What is actually bothering me?
+ ↓
+What am I trying to decide?
+ ↓
+What could I do?
+```
+
+Pythia does not have to formulate these questions.
+
+The interaction itself can trigger the internal dialogue.
+
+The product therefore works as a minimal mechanism for making a thought move.
+
+---
+
+# 3. Pythia as an Accessible Tool
+
+Pythia should be usable by anyone.
+
+The basic experience should require:
+
+* no registration;
+* no account;
+* no Internet connection;
+* no explanation before first use;
+* no physical coin.
+
+The smartphone replaces the physical coin.
+
+The result is a **digital coin that is always available**.
+
+A useful conceptual description is:
+
+> **The coin you never spend.**
+
+---
+
+# 4. Two Basic Pythia Modes
+
+Pythia has two basic interface modes.
+
+```text
+TEXT
+↕
+COIN
+```
+
+They represent the same Oracle mechanism.
+
+Only the form of the interaction changes.
+
+---
+
+## 4.1 TEXT Mode
+
+The minimal text interface uses:
+
+```text
+PYTHIA⚙
+
+
+ASK
+
+
+◯
+```
+
+The circle is not presented as a conventional button.
+
+It is a visual indicator of the interaction zone.
+
+The user interacts directly with the circle.
+
+After FLIP, the result is displayed as text.
+
+For the binary version:
+
+```text
+PYTHIA⚙
+
+
 YES
+
+
+◯
+```
+
+or:
+
+```text
+PYTHIA⚙
+
+
 NO
-UNDEFINED
+
+
+◯
 ```
 
-Everything else is optional.
-
----
-
-### 2.2 Human interpretation
-
-Oracle produces an event, not an interpretation.
-
-The user decides what the result means.
-
-The product must avoid presenting random output as objective truth.
-
----
-
-### 2.3 Privacy by default
-
-The Free version should require no account and should not build a personal behavioral history.
-
-Personal data collection is not a prerequisite for using Oracle.
-
----
-
-### 2.4 Complexity appears only when needed
-
-The basic Oracle experience must remain extremely simple.
-
-Additional functions should appear only when the user explicitly chooses to use them.
-
-The interface should not expose unnecessary functionality by default.
-
----
-
-### 2.5 Progressive personalization
-
-Oracle develops in three levels:
+The answer is displayed briefly and then the interface returns to:
 
 ```text
-FREE
-   ↓
-PREMIUM — My Oracle
-   ↓
-SUPER PREMIUM — My ORACLE
+PYTHIA⚙
+
+
+ASK
+
+
+◯
 ```
 
-Each level introduces a different degree of personalization.
-
----
-
-# 3. Product Levels
-
-## 3.1 FREE
-
-**FREE** is the basic Oracle experience.
-
-It should be immediately usable without registration.
-
-### Functions
-
-* FLIP
-* YES
-* NO
-* UNDEFINED
-* minimal interface
-* basic settings
-* Help
-
-### Free does not include
-
-* personal history
-* behavioral analytics
-* behavioral profiles
-* scenario history
-* AI
-* AI Companion
-* personalized AI Mental Guide
-* user behavior modeling
-
-### Account
-
-No account is required.
-
-The user should be able to open Oracle and use it immediately.
-
----
-
-# 4. PREMIUM — "My Oracle"
-
-## 4.1 Concept
-
-**PREMIUM — My Oracle** means:
-
-> I made Oracle mine.
-
-The Premium level is primarily about **personalization of the Oracle experience**.
-
-It does not turn Oracle into an analytical or AI system.
-
----
-
-## 4.2 Personalization
-
-Premium may include:
-
-* characters
-* skins
-* visual themes
-* animations
-* sounds
-* collections
-* other cosmetic elements
-
-These elements change how Oracle looks, sounds, and behaves as an interface.
-
-They do not require behavioral analysis.
-
----
-
-## 4.3 Basic Mental Guide
-
-Premium may include a **basic Mental Guide**.
-
-The Basic Mental Guide is deliberately simple.
-
-It is:
-
-* algorithmic
-* deterministic or rule-based
-* non-AI
-* not based on personal history
-* not based on behavioral analytics
-* not based on a behavioral profile
-
-It should function as a simple support mechanism rather than an intelligent personal advisor.
-
-The Basic Mental Guide must not evolve into a complex scenario engine at the Premium level.
-
----
-
-## 4.4 Premium does NOT include
-
-Premium does not include:
-
-* personal history
-* behavioral history
-* analytics
-* behavioral profiles
-* adaptive scenarios
-* AI analysis
-* AI Companion
-* AI Mental Guide
-
-All of these belong to **SUPER PREMIUM**.
-
----
-
-# 5. SUPER PREMIUM — "My ORACLE"
-
-## 5.1 Concept
-
-**SUPER PREMIUM — My ORACLE** represents a fundamentally different relationship with the product.
-
-> Oracle becomes personal and starts working with me.
-
-The capitalization is intentional:
+The complete interaction is therefore:
 
 ```text
-My Oracle
+ASK
+ ↓
+FLIP
+ ↓
+YES / NO
+ ↓
+ASK
 ```
 
-means personalization of the Oracle experience.
+---
+
+# 5. COIN Mode
+
+COIN mode transforms the same mechanism into a digital version of tossing a coin.
+
+The coin itself becomes the main interface object.
+
+The user does not press a separate FLIP button.
+
+The user interacts directly with the coin.
+
+---
+
+## 5.1 Neutral State
+
+The neutral state is a coin containing the word:
 
 ```text
-My ORACLE
+ASK
 ```
 
-means a personalized Oracle system that works with the user.
-
----
-
-## 5.2 Personal History
-
-Super Premium introduces persistent personal history.
-
-The system may record relevant Oracle interactions and associated user information according to the product's privacy settings and consent model.
-
-History becomes the foundation for later analysis.
+Conceptually:
 
 ```text
-History
-   ↓
-Analytics
-   ↓
-Patterns
-   ↓
-Personalized support
+PYTHIA⚙
+
+
+      [ ASK ]
+
 ```
 
-History does not exist retroactively in Free or Premium.
+The coin is therefore simultaneously:
 
-If a user activates Super Premium, the system starts building the Super Premium history from that point forward.
-
----
-
-# 6. Behavioral Analytics
-
-Super Premium may analyze accumulated Oracle interaction data.
-
-Possible analytical dimensions include:
-
-* frequency of use
-* patterns of decisions
-* repeated reactions
-* recurring situations
-* changes over time
-* interaction with different types of questions
-* repeated unresolved situations
-* relationship between Oracle results and subsequent user behavior
-
-Analytics should identify **patterns and signals**, not diagnose the user.
+* interface;
+* visual object;
+* prompt;
+* interaction zone.
 
 ---
 
-# 7. Behavioral Profiles
+## 5.2 Coin Interaction
 
-Super Premium may use behavioral profiles as working hypotheses.
+The basic cycle is:
 
-These are not medical diagnoses.
+```text
+ASK
+ ↓
+tap coin
+ ↓
+FLIP
+ ↓
+coin rotation
+ ↓
+HEADS / TAILS
+ ↓
+ASK
+```
 
-Initial profiles may include:
+The physical metaphor is deliberately familiar:
 
-| Profile              | Typical pattern                                     |
-| -------------------- | --------------------------------------------------- |
-| Procrastination      | Action is repeatedly delayed                        |
-| Indecision           | A choice remains unresolved                         |
-| Frustration          | Desired outcome encounters an obstacle              |
-| Apathy               | Lack of interest or motivation                      |
-| Burnout              | Persistent exhaustion or overload                   |
-| Perfectionism        | Fear of imperfection interferes with action         |
-| Self-sabotage        | Actions repeatedly undermine intended goals         |
-| Learned helplessness | Expectation that effort will not change the outcome |
-| Analysis paralysis   | Excessive analysis prevents action                  |
-
-These profiles should describe observed patterns rather than assert a diagnosis.
-
-The system should use formulations such as:
-
-> "Your recent behavior looks like..."
-
-rather than:
-
-> "You have..."
+> Think → toss the coin → see the side → react.
 
 ---
 
-# 8. Initial Self-Assessment
+## 5.3 Result
 
-When Super Premium is activated, the user may provide an initial self-assessment.
+The coin produces two physical sides:
 
-A possible starting mechanism:
+```text
+HEADS
+TAILS
+```
 
-1. Select up to three current states.
-2. Rate each state from 1 to 10.
-3. Store these ratings as the user's initial self-description.
-4. Compare later self-reports with observed interaction patterns.
+Pythia does not assign a meaning to either side.
 
-The assessment is a starting hypothesis.
-
-It is not a diagnosis.
-
----
-
-# 9. Scenarios
-
-Scenarios belong to **SUPER PREMIUM**.
-
-They may be generated or selected using accumulated history and analytics.
-
-A scenario can represent a recurring behavioral situation and provide an appropriate response strategy.
-
-The system may gradually learn which forms of interaction are more useful for a particular user.
-
-The scenario system should remain subordinate to the core Oracle mechanism.
-
-Oracle should not become an intrusive decision-making system.
-
----
-
-# 10. AI Companion
-
-## 10.1 Concept
-
-The **AI Companion** is a specialized agent operating inside the Oracle ecosystem.
-
-It is not intended to compete with general-purpose AI assistants.
-
-Its value comes from having access to the user's Oracle history, behavioral patterns, and accumulated context.
-
----
-
-## 10.2 Main functions
-
-The AI Companion may:
-
-* examine the user's Oracle history
-* interpret analytical patterns
-* identify recurring behavioral signals
-* help formulate the current problem
-* explain patterns in ordinary language
-* suggest possible next actions
-* provide supportive dialogue
-* help the user move from reflection to action
-* recognize when further analysis may itself be becoming avoidance
-
-The Companion may sometimes be deliberately direct.
+The user may assign any meaning they choose.
 
 For example:
 
-> **"Do it. Now."**
-
-This can become part of the distinctive character of Oracle.
-
----
-
-## 10.3 Companion philosophy
-
-The Companion should help the user recognize that a problem may exist.
-
-It should not diagnose or treat the user.
-
-Its role is closer to a **first-response support layer**:
-
 ```text
-Something feels wrong
-        ↓
-Oracle interaction
-        ↓
-Pattern becomes visible
-        ↓
-Companion helps interpret it
-        ↓
-Possible action
+HEADS = YES
+TAILS = NO
 ```
 
-When appropriate, the Companion may suggest seeking qualified professional help.
-
----
-
-# 11. AI Mental Guide
-
-The AI Mental Guide belongs exclusively to **SUPER PREMIUM**.
-
-Unlike the Basic Mental Guide, it can use:
-
-* personal history
-* analytics
-* behavioral patterns
-* scenarios
-* current context
-* AI-generated interpretation
-
-The AI Mental Guide should adapt its interaction to the user's situation.
-
-Possible interaction modes may include:
-
-* exploratory
-* supportive
-* reflective
-* action-oriented
-* direct
-
-The exact behavior of these modes should be defined during implementation.
-
----
-
-# 12. History → Analytics → AI
-
-The principal Super Premium architecture is:
+or:
 
 ```text
-Personal History
-       ↓
-    Analytics
-       ↓
-Patterns / Signals
-       ↓
-  AI Companion
-       ↓
-Human-readable dialogue
-       ↓
-Mental Guide / Action
+HEADS = GO
+TAILS = STOP
 ```
 
-This distinction is fundamental.
+or any other personal mapping.
 
-The AI is not the source of the user's history.
-
-The AI interprets accumulated information.
+The application itself does not decide what the result means.
 
 ---
 
-# 13. Registration
+# 6. No Artificial Third Side
 
-Registration should not be required for Free use.
+The coin has two sides.
 
-Registration becomes necessary when the user chooses a paid subscription.
+There is no need to invent a third visible result.
 
-Possible authentication methods may include:
+If the system does not produce a meaningful result, the interaction simply returns to the neutral state:
 
-* Google
-* Apple
-* Email
-* other supported authentication providers
+```text
+ASK
+ ↓
+FLIP
+ ↓
+ASK
+```
 
-The exact authentication system is an implementation decision.
+The undefined condition therefore does not need a separate symbol.
+
+It is represented by the return to neutrality.
 
 ---
 
-# 14. Subscription Model
+# 7. Temporary Answer State
 
-The primary commercial model is subscription-based.
+The answer is an event, not a permanent interface state.
 
-The product has two paid levels:
+After the result appears, it remains visible only briefly.
+
+Target duration:
+
+**approximately 2–3 seconds.**
+
+Then the interface returns to:
+
+```text
+ASK
+```
+
+The principle is:
+
+```text
+QUESTION
+ ↓
+ANSWER
+ ↓
+NEUTRAL
+```
+
+The purpose is to prevent the application from holding the user's attention.
+
+The answer should redirect attention back to the user's own thoughts.
+
+> **Pythia gives the event.
+> The user continues the dialogue.**
+
+---
+
+# 8. Psychological Interaction Model
+
+The intended interaction pattern is:
+
+```text
+ASK
+ ↓
+internal question
+ ↓
+FLIP
+ ↓
+external event
+ ↓
+reaction
+ ↓
+internal dialogue
+ ↓
+ASK
+```
+
+The application does not need to explain this process.
+
+The user experiences it.
+
+The role of `ASK` is particularly important.
+
+When `ASK` returns after every answer, it creates a repeated invitation to formulate the next question.
+
+Pythia therefore does not attempt to occupy the user's attention for long periods.
+
+It repeatedly hands the attention back to the user.
+
+---
+
+# 9. Core Oracle Logic
+
+The Oracle mechanism should remain extremely small.
+
+At the conceptual level:
+
+```text
+FLIP → binary event
+```
+
+For the coin interface:
+
+```text
+FLIP → HEADS / TAILS
+```
+
+For the text interface:
+
+```text
+FLIP → YES / NO
+```
+
+The mapping between the internal binary event and its visual representation belongs to the client.
+
+The Core should not contain presentation logic.
+
+---
+
+# 10. Separation of Core and Client
+
+The architecture is deliberately divided:
+
+```text
+CORE
+↓
+What happened?
+
+CLIENT
+↓
+How should it be shown?
+```
+
+The Core generates the Oracle event.
+
+The client decides how to represent it.
+
+For example:
+
+```text
+CORE
+→ HEADS
+
+TEXT CLIENT
+→ YES
+
+COIN CLIENT
+→ coin rotates and lands on HEADS
+
+Animated client
+→ character reacts
+
+Haptic client
+→ vibration
+```
+
+This allows multiple interfaces to share the same Oracle mechanism.
+
+---
+
+# 11. Native Application Architecture
+
+The native application should be extremely lightweight.
+
+Its basic responsibility is:
+
+```text
+receive event
+ ↓
+recognize event
+ ↓
+present event
+ ↓
+return to ASK
+```
+
+Optional local functions include:
+
+* animation;
+* sound;
+* haptic feedback;
+* visual themes;
+* coin collections.
+
+The application should not require a permanent server connection for the basic experience.
+
+---
+
+# 12. Offline-First Architecture
+
+Pythia should be designed as an **offline-first application**.
+
+## FREE
+
+The Free version can operate completely offline.
+
+```text
+DEVICE
+   ↓
+Pythia
+   ↓
+FLIP
+   ↓
+RESULT
+```
+
+No server is required.
+
+---
+
+## PREMIUM
+
+Premium can also operate offline after the required assets have been downloaded.
+
+Internet access is used primarily for:
+
+* subscription management;
+* downloading visual packages;
+* downloading new coin collections;
+* content updates.
+
+After download, the selected assets are stored locally.
+
+```text
+ONLINE
+ ↓
+DOWNLOAD PACKAGE
+ ↓
+LOCAL STORAGE
+ ↓
+OFFLINE USE
+```
+
+---
+
+## SUPER PREMIUM
+
+Super Premium may store history and calculate statistics locally.
+
+The Internet is primarily required when the user activates AI functionality.
+
+```text
+LOCAL HISTORY
+ ↓
+LOCAL ANALYTICS
+ ↓
+AI REQUEST
+ ↓
+SERVER
+ ↓
+AI RESPONSE
+ ↓
+LOCAL APPLICATION
+```
+
+Therefore Super Premium does not necessarily require continuous Internet access.
+
+---
+
+# 13. Telegram
+
+Telegram remains a separate server-dependent client.
+
+Telegram requires server infrastructure because communication takes place through the Telegram Bot API.
+
+The Telegram client may implement the same interaction rhythm:
+
+```text
+ASK
+ ↓
+FLIP
+ ↓
+ANSWER
+ ↓
+ASK
+```
+
+The Telegram implementation is therefore a remote interface to the Oracle mechanism.
+
+---
+
+# 14. Telegram Visual Timing
+
+Telegram has one special requirement.
+
+The answer must not remain on screen indefinitely.
+
+A complete interaction should behave approximately as:
+
+```text
+NEUTRAL
+ ↓
+ANSWER
+ ↓
+2–3 seconds
+ ↓
+NEUTRAL
+```
+
+The neutral state itself separates one answer from the next.
+
+A separate `PROCESSING` state is not required.
+
+---
+
+# 15. UI Identity
+
+The visual identity is deliberately minimal.
+
+## Main identity
+
+```text
+PYTHIA⚙
+```
+
+The gear is both:
+
+* a functional control;
+* a visual sign suggesting Pythia as an instrument.
+
+The gear should visually belong to the wordmark rather than look like a conventional detached settings icon.
+
+---
+
+# 16. Splash Screen
+
+The Splash screen is the entry point for every new session.
+
+```text
+PYTHIA⚙
+
+
+ASK
+
+
+◯
+```
+
+The Splash is an artistic interface state.
+
+`ASK` is permanently part of the composition.
+
+It does not need to be generated by the application.
+
+The user can interact directly with the circle.
+
+---
+
+# 17. Working Screen — Text Mode
+
+The working state contains the result and the persistent interaction zone.
+
+```text
+PYTHIA⚙
+
+
+YES
+
+
+◯
+```
+
+or:
+
+```text
+PYTHIA⚙
+
+
+NO
+
+
+◯
+```
+
+After the short display:
+
+```text
+PYTHIA⚙
+
+
+ASK
+
+
+◯
+```
+
+---
+
+# 18. Working Screen — Coin Mode
+
+The working state contains the coin itself.
+
+```text
+PYTHIA⚙
+
+
+     [ ASK ]
+
+
+```
+
+During FLIP:
+
+```text
+coin rotation
+```
+
+Result:
+
+```text
+     [ HEADS ]
+```
+
+or:
+
+```text
+     [ TAILS ]
+```
+
+Then:
+
+```text
+     [ ASK ]
+```
+
+The coin itself is the interaction object.
+
+There is no separate FLIP button.
+
+---
+
+# 19. Universal Navigation
+
+The application uses two primary symbols:
+
+```text
+⚙ → Menu
+◯ → Working / FLIP
+```
+
+The circle is primarily the interaction zone.
+
+On secondary screens it may also serve as the return mechanism to the Working state.
+
+This avoids unnecessary navigation controls.
+
+---
+
+# 20. Menu
+
+The menu is a functional interface rather than an artistic Oracle scene.
+
+```text
+MY ORACLE
+
+LANGUAGE      →
+ANIMATION     ON / OFF
+HAPTIC        ON / OFF
+SOUND         ON / OFF
+HELP          →
+
+
+──────────────
+
+PREMIUM       →
+```
+
+**MY ORACLE** is a section heading.
+
+---
+
+# 21. Language
+
+Language is a basic application function.
+
+The interface should use language packages rather than hard-coded text.
+
+Initial localization targets may include the major global languages.
+
+The language layer should cover all user-facing text, including:
+
+* ASK;
+* YES;
+* NO;
+* HEADS;
+* TAILS;
+* HELP;
+* menu items;
+* Premium text;
+* subscription interface.
+
+A language package may be represented as:
+
+```text
+locales/
+├── en.json
+├── uk.json
+├── ru.json
+├── de.json
+├── fr.json
+├── es.json
+└── ...
+```
+
+The exact language list may evolve according to actual users and market needs.
+
+---
+
+# 22. Animation
+
+Animation is the visual presence of Pythia.
+
+The initial concept is a single minimal animated character:
+
+* simple smiley-like form;
+* light facial expression;
+* small head movement;
+* style related to the typography and visual language of Pythia.
+
+Because there is initially only one animation concept, the setting is simply:
+
+```text
+ANIMATION   ON / OFF
+```
+
+---
+
+# 23. Haptic
+
+The haptic setting is:
+
+```text
+HAPTIC   ON / OFF
+```
+
+No additional configuration is required initially.
+
+---
+
+# 24. Sound
+
+The sound setting is:
+
+```text
+SOUND   ON / OFF
+```
+
+Sound may be used for:
+
+* coin rotation;
+* coin landing;
+* other future Oracle events.
+
+The basic product remains fully usable without sound.
+
+---
+
+# 25. Help
+
+`HELP` opens a separate page containing the main explanatory text.
+
+The Menu itself remains minimal.
+
+The Help page explains:
+
+* what Pythia is;
+* how ASK works;
+* how FLIP works;
+* how results should be interpreted;
+* available modes;
+* basic settings.
+
+---
+
+# 26. Premium — My Oracle
+
+Premium means:
+
+> **I made Oracle mine.**
+
+Premium changes the visual and sensory form of Pythia without changing the core mechanism.
+
+Possible Premium features include:
+
+* themes;
+* animated forms;
+* sounds;
+* coin collections;
+* special visual packages;
+* personal appearance choices.
+
+Premium does not require behavioral analytics.
+
+It does not require AI.
+
+It does not require persistent personal history.
+
+---
+
+# 27. Coin Collection
+
+The Coin mode creates a natural Premium collection system.
+
+Premium users may collect and use digital coins representing different:
+
+* cultures;
+* countries;
+* civilizations;
+* historical periods;
+* artistic traditions.
+
+Potential collections include:
+
+```text
+Ancient
+Roman
+Byzantine
+Medieval
+Modern
+Coins of the World
+Special Editions
+```
+
+The collection can eventually become a large digital numismatic world.
+
+The selected coin becomes the user's active Pythia interface.
+
+---
+
+# 28. Digital Numismatic Experience
+
+A digital coin may include:
+
+* obverse;
+* reverse;
+* historical identification;
+* period;
+* issuing state or region;
+* short description;
+* animated flip;
+* optional sound.
+
+These elements enrich the experience without changing the underlying Oracle mechanism.
+
+The coin remains an interface object first.
+
+---
+
+# 29. Premium Website
+
+The Premium page contains:
+
+```text
+PREMIUM
+
+Personalize your Pythia.
+
+Characters
+Themes
+Animations
+Sounds
+Collections
+
+
+DISCOVER →
+
+────────────
+
+SUBSCRIBE →
+```
+
+`DISCOVER` leads to the Pythia website.
+
+The website represents a broader visual world:
+
+* coins;
+* characters;
+* images;
+* collections;
+* historical material;
+* future visual experiences.
+
+`SUBSCRIBE` leads to subscription.
+
+---
+
+# 30. Super Premium — My ORACLE
+
+Super Premium represents a different scale of product.
+
+The original Pythia remains primarily as the interface and ritual shell.
+
+The internal system becomes personalized and intelligent.
+
+```text
+PYTHIA
+ ↓
+history
+ ↓
+analytics
+ ↓
+patterns
+ ↓
+AI Companion
+ ↓
+personal interaction
+```
+
+This layer includes:
+
+* personal history;
+* analytics;
+* behavioral patterns;
+* profiles;
+* scenarios;
+* AI Companion;
+* AI Mental Guide.
+
+---
+
+# 31. Progressive Product Structure
+
+The product develops in layers:
 
 ```text
 FREE
-   │
-   ├── PREMIUM — My Oracle
-   │
-   └── SUPER PREMIUM — My ORACLE
+↓
+PYTHIA
 ```
-
-The levels have different cost structures.
-
-### Premium
-
-The main value comes from digital personalization.
-
-Examples:
-
-* skins
-* characters
-* themes
-* animations
-* sounds
-* collections
-
-These features have relatively low variable infrastructure cost.
-
-### Super Premium
-
-The main additional costs are associated with:
-
-* storage
-* history
-* analytics
-* AI processing
-* AI Companion
-* AI Mental Guide
-
-AI usage may therefore require reasonable usage limits or included monthly allowances.
-
-Additional AI usage may be offered separately if required by the final business model.
-
-Automatic additional billing should be explicit and opt-in.
-
----
-
-# 15. Journal / Content
-
-Oracle may include a content section such as:
-
-**Oracle Journal**
-
-or
-
-**Oracle Insights**
-
-The content may include:
-
-* articles
-* practical advice
-* observations
-* research
-* behavioral topics
-* decision-making
-* procrastination
-* frustration
-* analysis paralysis
-* personal effectiveness
-
-Content should be useful independently of subscription status.
-
-At the same time, it can demonstrate how Oracle's deeper personalized functions work.
-
----
-
-# 16. Procrastination and Frustration
-
-Procrastination is likely to be one of the most accessible entry points into the Oracle concept because it is a familiar everyday problem.
-
-Frustration represents a broader underlying mechanism.
-
-The product can therefore communicate the relationship:
 
 ```text
-Frustration
-   ↓
-Blocked intention
-   ↓
-Procrastination / avoidance / indecision
-   ↓
-Need for a minimal intervention
+PREMIUM
+↓
+MY ORACLE
 ```
-
-The phrase **"magic kick"** may be used informally in marketing as a humorous description of Oracle's role.
-
-It is not a medical or therapeutic claim.
-
----
-
-# 17. User Interface Principles
-
-The Oracle interface should remain minimal.
-
-### Main screen
-
-The default screen should contain essentially:
 
 ```text
-                    ⚙
-
-                  ORACLE
-
-                 [ FLIP ]
+SUPER PREMIUM
+↓
+MY ORACLE
 ```
 
-The exact visual design will be developed in Figma.
+The first two levels preserve the simple Pythia experience.
+
+Super Premium introduces a larger personalized system around it.
 
 ---
 
-## 17.1 Gear Menu
+# 32. Privacy Architecture
 
-The gear icon is present on every screen.
-
-It is the single entry point for secondary functions.
-
-There should be no bottom navigation bar.
-
-Possible menu structure:
-
-```text
-⚙
-
-Help
-
-────────────
-
-Premium
-  ├── Mental Guide
-  └── AI Companion
-
-────────────
-
-Sound
-Haptic
-Animation
-Privacy
-```
-
-The exact menu will depend on the user's subscription level.
-
-Functions unavailable to the user should not create unnecessary interface clutter.
-
----
-
-# 18. Sensory Output
-
-Oracle may eventually support several output channels:
-
-* visual
-* sound
-* haptic feedback
-* animation
-
-These should be independently configurable.
-
-Sound should not be required.
-
-Telegram remains intentionally silent.
-
-The native application may later provide richer sensory interaction, including headphones, haptic feedback, and visual-only modes.
-
----
-
-# 19. Telegram MVP
-
-Telegram is the first operational Oracle client.
-
-Current interaction:
-
-```text
-/start
-   ↓
-ORACLE
-Think of a question.
-Press FLIP.
-Get your answer.
-   ↓
-FLIP
-   ↓
-YES / NO / UNDEFINED
-```
-
-The Telegram implementation currently provides:
-
-* `/start`
-* `/help`
-* `/flip`
-* inline FLIP button
-* random YES / NO / UNDEFINED result
-* callback handling
-* editing of the original Telegram message
-
-The Telegram MVP does not require:
-
-* user registration
-* personal history
-* analytics
-* AI
-* behavioral profiling
-
-Audio is intentionally not part of the Telegram MVP.
-
----
-
-# 20. Native Application
-
-The native application is the future **embodied Oracle**.
-
-Telegram is primarily a conversational interface.
-
-The native application can eventually provide capabilities that Telegram cannot reproduce naturally:
-
-* physical-feeling interaction
-* animation
-* sound
-* haptic feedback
-* richer personalization
-* persistent local or cloud history
-* advanced interaction patterns
-
-Development of the native application should begin with the minimal Free Oracle experience.
-
----
-
-# 21. Development Strategy
-
-Development should proceed incrementally.
-
-## Stage 1 — Core Oracle
-
-Implement and stabilize:
-
-* FLIP
-* YES
-* NO
-* UNDEFINED
-* minimal interface
-* basic settings
-
-No account.
-
-No history.
-
-No AI.
-
----
-
-## Stage 2 — Free Native Application
-
-Create the minimal native application.
-
-Primary screen:
-
-```text
-ORACLE
-   +
-FLIP
-```
-
-Add:
-
-* gear menu
-* Help
-* Sound
-* Haptic
-* Animation
-* Privacy
-
----
-
-## Stage 3 — Premium
-
-Introduce:
-
-**My Oracle**
-
-Implement:
-
-* registration
-* subscriptions
-* personalization
-* characters
-* skins
-* themes
-* animations
-* sounds
-* collections
-* Basic Mental Guide
-
-Do not introduce behavioral analytics or personal history at this stage.
-
----
-
-## Stage 4 — Super Premium
-
-Introduce:
-
-**My ORACLE**
-
-Implement:
-
-* persistent personal history
-* analytics
-* behavioral patterns
-* profiles
-* scenarios
-* AI Companion
-* AI Mental Guide
-
----
-
-## Stage 5 — Advanced Oracle
-
-Potential future capabilities:
-
-* deeper behavioral modeling
-* adaptive scenarios
-* advanced personalization
-* expanded AI interaction
-* richer sensory interaction
-* additional content
-* expanded Oracle ecosystem
-
-These features should be introduced only when justified by actual user behavior and product needs.
-
----
-
-# 22. Privacy Architecture
-
-Privacy should be designed into the product from the beginning.
-
-### Free
+## Free
 
 ```text
 No account
 No personal history
-No behavioral profile
-No personalization history
+No behavioral analytics
+No AI
+Offline
 ```
 
-### Premium
+## Premium
+
+```text
+Account for subscription
+Local personalization
+Downloaded assets
+No behavioral analytics
+No AI
+Offline after download
+```
+
+## Super Premium
 
 ```text
 Account
-Subscription
-Personalization
-No behavioral history
-No analytics
-No AI profile
-```
-
-### Super Premium
-
-```text
-Account
-Personal history
-Analytics
+Local history
+Local analytics
 Behavioral patterns
-AI
-Personalized support
+AI when requested
 ```
 
-The transition from Premium to Super Premium should not silently imply that historical Free or Premium behavior has been stored.
+The product should not silently backfill historical data from earlier levels.
 
 ---
 
-# 23. Product Philosophy
+# 33. Product Principle
 
-Oracle is intentionally asymmetric.
+The basic Oracle does not become more complicated simply because more expensive layers are added.
 
-The technical mechanism can be extremely simple.
-
-The experience can become progressively deeper.
+The foundational experience remains:
 
 ```text
-Simple event
-     ↓
-Human reaction
-     ↓
-Repeated interaction
-     ↓
-Pattern
-     ↓
-Meaning
-     ↓
-Personal Oracle
+ASK
+ ↓
+FLIP
+ ↓
+ANSWER
+ ↓
+ASK
 ```
 
-The product should not begin by trying to understand the user.
-
-It begins by giving the user something to react to.
+The difference is the richness of the surrounding experience.
 
 ---
 
-# 24. Product Identity
+# 34. Core Philosophy
 
-### Short definition
+Pythia does not attempt to replace human decision-making.
 
-> **Oracle — a mechanism for moving an unresolved problem off dead center.**
+It creates a minimal disturbance in a moment of uncertainty.
 
-### Product principle
+The user supplies:
 
-> **The event belongs to the Oracle.
+* the question;
+* the meaning;
+* the interpretation;
+* the decision.
+
+Pythia supplies:
+
+* the event.
+
+> **The event belongs to Pythia.
 > The meaning belongs to the human.**
 
-### Core statement
-
-> **Oracle doesn't know. That's the point.**
-
-### Interaction
-
-> **Think → FLIP → Reveal → Reaction**
-
-### Product evolution
-
-```text
-Oracle
-   ↓
-My Oracle
-   ↓
-My ORACLE
-```
-
 ---
 
-# 25. Current Product Boundary
+# 35. Guiding Development Rule
 
-At the current stage, Oracle should remain deliberately small.
+Every feature should answer one question:
 
-The following are **not** required for the basic product:
+> **Does this make Pythia more useful without destroying the simplicity of Pythia?**
 
-* complex decision trees
-* psychological diagnosis
-* general-purpose chatbot functionality
-* large social features
-* unnecessary registration
-* advertising-driven personalization
-* behavioral surveillance
-* complex gamification
+The product should grow around the basic mechanism.
 
-The central interaction must remain recognizable even after the product becomes substantially more sophisticated.
+It should never lose the ability to function as the smallest possible Pythia:
 
 ```text
-Think.
-
-FLIP.
-
-Observe your reaction.
+ASK
+ ↓
+FLIP
+ ↓
+ANSWER
+ ↓
+ASK
 ```
 
----
-
-# 26. Guiding Development Rule
-
-Every new feature should answer one question:
-
-> **Does this make Oracle more useful without destroying the simplicity of Oracle?**
-
-If the answer is unclear, the feature should not be added to the core experience.
-
-The product should grow **around** the Oracle mechanism, not replace it.
+That is the core.
